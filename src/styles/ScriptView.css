@@ -1,0 +1,130 @@
+/* Existing styles */
+.playStructure {
+  top: 10px;
+  bottom: 10px;
+  left: 15px;
+  right: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  margin: -10px;
+  overflow: auto;
+  font-family: "Heuristica", serif;
+}
+
+#script-view {
+  display: flex;
+  flex-grow: 1;
+  padding: 1em;
+  flex-direction: column;
+  overflow: auto;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  color: lightGrey;
+  background-color: #121212;
+  position: relative;
+}
+
+/* Styles for the centered upload button */
+#base-view {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns the button towards the top */
+  height: 100%;
+  padding-top: 25%; /* Adjust this to position the button further from the top */
+}
+
+#upload-script-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the button and text */
+}
+
+#upload-script-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#upload-script-button-icon {
+  width: 120px;
+  height: auto;
+}
+
+#upload-script-button-text {
+  font-size: 20px;
+  font-family: "Heuristica", serif;
+  color: lightGrey;
+  text-align: center;
+  margin-top: 10px; /* Adjust spacing between image and text */
+}
+
+/* Additional existing styles for the script view */
+.playTitle,
+.actTitle,
+.sceneTitle {
+  font-family: "Heuristica", serif;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.playTitle {
+  font-size: 35px;
+}
+
+.actTitle {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.sceneTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.playDescription,
+.actDescription,
+.sceneDescription {
+  font-family: "Heuristica", serif;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.playEnding,
+.actEnding,
+.sceneEnding {
+  font-family: "Heuristica", serif;
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.characterContent {
+  margin-left: 10px;
+}
+
+.characterName {
+  font-size: 11px;
+  font-weight: bold;
+  margin-right: 1.5ch;
+  margin-left: -10px;
+  display: inline;
+}
+
+.characterDialogue,
+.characterDirection {
+  display: inline;
+  font-size: 15px;
+}
+
+.characterDirection {
+  font-style: italic;
+}
+
+/* Additional adjustments to ensure compatibility */
+#upload-script-button-icon {
+  margin: 0 auto;
+}

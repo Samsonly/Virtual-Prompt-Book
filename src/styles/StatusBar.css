@@ -1,0 +1,9 @@
+#status-bar {
+  height: 20px;
+  background-color: #121212; /* Project standard background color */
+  color: lightgrey; /* Light grey font color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}

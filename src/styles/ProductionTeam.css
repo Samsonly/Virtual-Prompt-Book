@@ -1,0 +1,115 @@
+.modal-background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#production-team-modal-window {
+  position: relative;
+  width: 560px;
+  height: 90%;
+  background-color: #121212;
+  color: lightGrey;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Heuristica", serif;
+  border: 1px solid lightGrey;
+  box-shadow: 0 0 2px 2px rgba(211, 211, 211, 0.5);
+}
+
+#production-team-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#production-team-title {
+  font-size: 30px;
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.production-team-entry {
+  display: grid;
+  grid-template-columns: 120px 140px 216px auto;
+  gap: 10px;
+  align-items: center;
+  padding: 0;
+}
+
+.production-team-entry select,
+.production-team-entry input {
+  font-size: 12px;
+  color: lightgrey;
+  background-color: #2b2b2b;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.delete-button {
+  width: 12px;
+  height: 12px;
+  background-color: #121212;
+  border: 1px solid lightgrey;
+  color: lightgrey;
+  font-size: 8px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  padding-top: 1px;
+}
+
+#add-assignment-button {
+  background: linear-gradient(to right, #121212, #2b2b2b, #121212);
+  background-color: #2b2b2b;
+  height: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  font-style: italic;
+  color: white;
+  letter-spacing: 1px;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.menu-close-button {
+  position: absolute;
+  bottom: 15px;
+  left: 16px;
+  cursor: pointer;
+  border: 1px solid lightGrey;
+  border-radius: 5px;
+  color: lightGrey;
+  background-color: #121212;
+  box-shadow: 0 0 1px 1px rgba(211, 211, 211, 0.5);
+}
+
+.menu-save-button {
+  position: absolute;
+  bottom: 15px;
+  right: 16px;
+  cursor: pointer;
+  border: 1px solid lightGrey;
+  border-radius: 5px;
+  color: lightGrey;
+  background-color: #121212;
+  box-shadow: 0 0 1px 1px rgba(211, 211, 211, 0.5);
+}

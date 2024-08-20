@@ -1,0 +1,210 @@
+#view-rehearsal-notes-table {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: -10px;
+  font-family: "Heuristica", serif;
+  overflow: auto;
+}
+
+#view-rehearsal-notes-title {
+  display: block;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: underrehearsal;
+}
+
+#view-rehearsal-notes-tabs {
+  padding: 30px;
+}
+
+.modal-background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-window {
+  position: relative;
+  width: 80%;
+  min-width: 500px;
+  height: 90%;
+  background-color: #121212;
+  color: lightGrey;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightGrey;
+  box-shadow: 0 0 2px 2px rgba(211, 211, 211, 0.5);
+}
+
+.department-tab {
+  padding: 8px;
+  margin-right: 4px;
+  background-color: #121212;
+  color: lightGrey;
+  border: 1px solid lightGrey;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.active-tab {
+  font-weight: bold;
+  border: 2px solid lightGrey;
+}
+
+.note-entry {
+  position: relative;
+  background-color: #181818;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-right: 40px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center; /* Center content vertically */
+}
+
+.note-entry:hover .menu-button {
+  display: block;
+}
+
+.note-entry.archived-note {
+  background-color: #303030;
+  border: 1px solid #d3d3d3;
+  opacity: 0.7;
+}
+
+.note-line {
+  margin-top: 5px;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  padding-left: 10px;
+}
+
+.view-rehearsal-notes-button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 15px;
+  left: 16px;
+  right: 16px;
+}
+
+.menu-close-button {
+  position: absolute;
+  width: 50px;
+  bottom: 15px;
+  left: 16px;
+  cursor: pointer;
+  border: 1px solid lightGrey;
+  border-radius: 5px;
+  color: lightGrey;
+  background-color: #121212;
+  box-shadow: 0 0 1px 1px rgba(211, 211, 211, 0.5);
+}
+
+.menu-export-department-button {
+  position: absolute;
+  width: 100px;
+  bottom: 15px;
+  right: 132px;
+  cursor: pointer;
+  border: 1px solid lightGrey;
+  border-radius: 5px;
+  color: lightGrey;
+  background-color: #121212;
+  box-shadow: 0 0 1px 1px rgba(211, 211, 211, 0.5);
+}
+
+.menu-generate-report-button {
+  position: absolute;
+  width: 100px;
+  bottom: 15px;
+  right: 16px;
+  cursor: pointer;
+  border: 1px solid lightGrey;
+  border-radius: 5px;
+  color: lightGrey;
+  background-color: #121212;
+  box-shadow: 0 0 1px 1px rgba(211, 211, 211, 0.5);
+}
+
+.menu-button {
+  position: absolute;
+  right: 10px;
+  transform: translateY(-8px);
+  background: none;
+  border: none;
+  color: lightGrey;
+  font-size: 25px;
+  cursor: pointer;
+  line-height: 0.1;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background-color: #121212;
+  border: 1px solid lightGrey;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.dropdown-menu.active {
+  display: block;
+  overflow: hidden;
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  color: lightGrey;
+}
+
+.dropdown-menu button:hover {
+  background-color: #181818;
+}
+
+.include-archived-container {
+  /* float: right; */
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.include-archived-checkbox {
+  width: 12px;
+  height: 12px;
+}
+
+.include-archived-label {
+  font-size: 13px;
+  color: lightGrey;
+}

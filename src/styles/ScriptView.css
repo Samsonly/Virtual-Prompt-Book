@@ -25,19 +25,18 @@
   position: relative;
 }
 
-/* Styles for the centered upload button */
 #base-view {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Aligns the button towards the top */
+  align-items: flex-start;
   height: 100%;
-  padding-top: 25%; /* Adjust this to position the button further from the top */
+  padding-top: 25%;
 }
 
 #upload-script-button-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the button and text */
+  align-items: center;
 }
 
 #upload-script-button {
@@ -57,49 +56,106 @@
   font-family: "Heuristica", serif;
   color: lightGrey;
   text-align: center;
-  margin-top: 10px; /* Adjust spacing between image and text */
-}
-
-/* Additional existing styles for the script view */
-.playTitle,
-.actTitle,
-.sceneTitle {
-  font-family: "Heuristica", serif;
-  text-align: center;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .playTitle {
   font-size: 35px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+.playDescription {
+  font-size: 13px;
+  text-align: center;
+  font-style: italic;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+.playEnding {
+  font-size: 16px;
+  text-align: right;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .actTitle {
   font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+.actDescription {
+  font-size: 13px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.actEnding {
+  font-size: 12px;
+  text-align: right;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  font-style: italic;
   font-weight: bold;
 }
 
 .sceneTitle {
   font-size: 18px;
   font-weight: bold;
-}
-
-.playDescription,
-.actDescription,
-.sceneDescription {
-  font-family: "Heuristica", serif;
   text-align: center;
-  font-style: italic;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-bottom: 10px;
 }
 
-.playEnding,
-.actEnding,
+.sceneLocation {
+  font-size: 13px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+.sceneDescription {
+  font-size: 13px;
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
 .sceneEnding {
-  font-family: "Heuristica", serif;
+  font-size: 13px;
   text-align: right;
+  padding-right: 10px;
+  margin-bottom: 100px;
   font-style: italic;
   font-weight: bold;
-  margin-bottom: 10px;
+}
+
+.stageDirections {
+  font-size: 13px;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  font-style: italic;
 }
 
 .characterContent {
@@ -111,20 +167,25 @@
   font-weight: bold;
   margin-right: 1.5ch;
   margin-left: -10px;
+  white-space: normal;
   display: inline;
 }
 
-.characterDialogue,
-.characterDirection {
+.characterDialogue {
+  white-space: normal;
   display: inline;
+  padding-right: 0.25em;
   font-size: 15px;
 }
 
 .characterDirection {
+  white-space: normal;
+  display: inline;
   font-style: italic;
+  padding-right: 0.25em;
+  font-size: 15px;
 }
 
-/* Additional adjustments to ensure compatibility */
 #upload-script-button-icon {
   margin: 0 auto;
 }

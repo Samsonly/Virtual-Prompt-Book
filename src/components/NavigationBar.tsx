@@ -14,6 +14,7 @@ import CastList from "./CastList";
 import ProductionTeam from "./ProductionTeam";
 import UploadScript from "./UploadScript";
 import ViewLineNotes from "./ViewLineNotes";
+import ViewRehearsalNotes from "./ViewRehearsalNotes";
 import { saveProjectData } from "../utils/saveProjectUtil";
 import "../styles/NavigationBar.css";
 
@@ -103,6 +104,9 @@ function NavigationBar() {
         break;
       case "View Line Notes":
         showSettings(ViewLineNotes);
+        break;
+      case "View Rehearsal Notes":
+        showSettings(ViewRehearsalNotes);
         break;
       default:
         break;
@@ -373,7 +377,11 @@ function NavigationBar() {
             >
               Line Notes
             </div>
-            <div className="dditem" id="dd6item2">
+            <div
+              className="dditem"
+              id="dd6item2"
+              onClick={(e) => handleItemClick(e, "View Rehearsal Notes")}
+            >
               Rehearsal Reports
             </div>
             <div className="dditem" id="dd6item3">

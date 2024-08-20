@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSettings } from "../contexts/SettingsContext";
-import { useProject } from "../contexts/ProjectContext";
+import {
+  useProject,
+  UPDATE_PROJECT_SAVE_FILE,
+  UPDATE_PROJECT_SAVE_STATUS,
+} from "../contexts/ProjectContext";
 import "../styles/RehearsalNotes.css";
 
 const RehearsalNotes: React.FC = () => {
   const { hideSettings } = useSettings();
-  const { state } = useProject();
+  const { state, dispatch } = useProject();
   const { projectSaveFile } = state;
 
   const [notesState, setNotesState] = useState<Record<string, boolean>>({});
@@ -61,6 +65,46 @@ const RehearsalNotes: React.FC = () => {
     ));
   };
 
+  const saveRehearsalNote = () => {
+    const selectedDepartments = Object.keys(notesState).filter(
+      (department) => notesState[department]
+    );
+
+    const currentDate = new Date();
+    const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDate.getDate()).padStart(2, "0");
+    const formattedDate = `${month}/${day}`;
+
+    const rehearsalNote = {
+      note: textInput,
+      status: "active",
+      date: formattedDate,
+    };
+
+    let updatedRehearsalNotes = projectSaveFile.rehearsalNotes;
+
+    selectedDepartments.forEach((department) => {
+      const existingDepartmentIndex = updatedRehearsalNotes.findIndex((note) =>
+        note.hasOwnProperty(department)
+      );
+
+      if (existingDepartmentIndex === -1) {
+        updatedRehearsalNotes.push({ [department]: [rehearsalNote] });
+      } else {
+        updatedRehearsalNotes[existingDepartmentIndex][department].push(
+          rehearsalNote
+        );
+      }
+
+      dispatch({
+        type: UPDATE_PROJECT_SAVE_FILE,
+        payload: { rehearsalNotes: updatedRehearsalNotes },
+      });
+      dispatch({ type: UPDATE_PROJECT_SAVE_STATUS, payload: false });
+    });
+    hideSettings();
+  };
+
   return (
     <div className="modal-background-overlay">
       <div id="rehearsal-notes-modal-window">
@@ -83,10 +127,7 @@ const RehearsalNotes: React.FC = () => {
             <button className="menu-close-button" onClick={hideSettings}>
               Close
             </button>
-            <button
-              className="menu-save-button"
-              onClick={() => console.log("Save logic here")}
-            >
+            <button className="menu-save-button" onClick={saveRehearsalNote}>
               Save
             </button>
           </div>

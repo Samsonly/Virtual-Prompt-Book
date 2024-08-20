@@ -7,7 +7,7 @@ const ProjectContext_1 = require("../contexts/ProjectContext");
 require("../styles/RehearsalNotes.css");
 const RehearsalNotes = () => {
     const { hideSettings } = (0, SettingsContext_1.useSettings)();
-    const { state } = (0, ProjectContext_1.useProject)();
+    const { state, dispatch } = (0, ProjectContext_1.useProject)();
     const { projectSaveFile } = state;
     const [notesState, setNotesState] = (0, react_1.useState)({});
     const [textInput, setTextInput] = (0, react_1.useState)("");
@@ -34,6 +34,34 @@ const RehearsalNotes = () => {
     const renderCheckboxes = () => {
         return Object.keys(notesState).map((department) => ((0, jsx_runtime_1.jsxs)("div", Object.assign({ className: "checkbox-wrapper" }, { children: [(0, jsx_runtime_1.jsx)("input", { type: "checkbox", id: `${department}-notes`, name: `${department}-notes`, checked: notesState[department], onChange: () => handleCheckboxChange(department) }), (0, jsx_runtime_1.jsx)("label", Object.assign({ htmlFor: `${department}-notes` }, { children: formatDepartmentName(department) }))] }), department)));
     };
-    return ((0, jsx_runtime_1.jsx)("div", Object.assign({ className: "modal-background-overlay" }, { children: (0, jsx_runtime_1.jsx)("div", Object.assign({ id: "rehearsal-notes-modal-window" }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ id: "rehearsal-notes-table" }, { children: [(0, jsx_runtime_1.jsx)("div", Object.assign({ id: "rehearsal-notes-title" }, { children: "Rehearsal Note" })), (0, jsx_runtime_1.jsx)("div", Object.assign({ id: "rehearsal-notes-departments-box" }, { children: (0, jsx_runtime_1.jsx)("div", Object.assign({ className: "rehearsal-notes-departments-row" }, { children: renderCheckboxes() })) })), (0, jsx_runtime_1.jsx)("div", Object.assign({ id: "rehearsal-notes-input-container" }, { children: (0, jsx_runtime_1.jsx)("textarea", { id: "rehearsal-notes-input", value: textInput, onChange: handleTextInputChange, autoFocus: true }) })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ id: "rehearsal-notes-button-row" }, { children: [(0, jsx_runtime_1.jsx)("button", Object.assign({ className: "menu-close-button", onClick: hideSettings }, { children: "Close" })), (0, jsx_runtime_1.jsx)("button", Object.assign({ className: "menu-save-button", onClick: () => console.log("Save logic here") }, { children: "Save" }))] }))] })) })) })));
+    const saveRehearsalNote = () => {
+        const selectedDepartments = Object.keys(notesState).filter((department) => notesState[department]);
+        const currentDate = new Date();
+        const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+        const day = String(currentDate.getDate()).padStart(2, "0");
+        const formattedDate = `${month}/${day}`;
+        const rehearsalNote = {
+            note: textInput,
+            status: "active",
+            date: formattedDate,
+        };
+        let updatedRehearsalNotes = projectSaveFile.rehearsalNotes;
+        selectedDepartments.forEach((department) => {
+            const existingDepartmentIndex = updatedRehearsalNotes.findIndex((note) => note.hasOwnProperty(department));
+            if (existingDepartmentIndex === -1) {
+                updatedRehearsalNotes.push({ [department]: [rehearsalNote] });
+            }
+            else {
+                updatedRehearsalNotes[existingDepartmentIndex][department].push(rehearsalNote);
+            }
+            dispatch({
+                type: ProjectContext_1.UPDATE_PROJECT_SAVE_FILE,
+                payload: { rehearsalNotes: updatedRehearsalNotes },
+            });
+            dispatch({ type: ProjectContext_1.UPDATE_PROJECT_SAVE_STATUS, payload: false });
+        });
+        hideSettings();
+    };
+    return ((0, jsx_runtime_1.jsx)("div", Object.assign({ className: "modal-background-overlay" }, { children: (0, jsx_runtime_1.jsx)("div", Object.assign({ id: "rehearsal-notes-modal-window" }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ id: "rehearsal-notes-table" }, { children: [(0, jsx_runtime_1.jsx)("div", Object.assign({ id: "rehearsal-notes-title" }, { children: "Rehearsal Note" })), (0, jsx_runtime_1.jsx)("div", Object.assign({ id: "rehearsal-notes-departments-box" }, { children: (0, jsx_runtime_1.jsx)("div", Object.assign({ className: "rehearsal-notes-departments-row" }, { children: renderCheckboxes() })) })), (0, jsx_runtime_1.jsx)("div", Object.assign({ id: "rehearsal-notes-input-container" }, { children: (0, jsx_runtime_1.jsx)("textarea", { id: "rehearsal-notes-input", value: textInput, onChange: handleTextInputChange, autoFocus: true }) })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ id: "rehearsal-notes-button-row" }, { children: [(0, jsx_runtime_1.jsx)("button", Object.assign({ className: "menu-close-button", onClick: hideSettings }, { children: "Close" })), (0, jsx_runtime_1.jsx)("button", Object.assign({ className: "menu-save-button", onClick: saveRehearsalNote }, { children: "Save" }))] }))] })) })) })));
 };
 exports.default = RehearsalNotes;

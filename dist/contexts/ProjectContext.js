@@ -55,7 +55,7 @@ const initialState = {
             },
         ],
         productionDepartments: [],
-        rehearsalReports: [],
+        rehearsalNotes: [],
     },
     isProjectSaved: false,
     verticalPaneSizes: [50, 50],

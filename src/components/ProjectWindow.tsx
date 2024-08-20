@@ -10,11 +10,20 @@ import GadgetBar from "./GadgetBar";
 import ContentContainer from "./ContentContainer";
 import StatusBar from "./StatusBar";
 import "../styles/ProjectWindow.css";
+import UploadScript from "./UploadScript";
+import CharacterList from "./CharacterList";
+import ContactDatabase from "./ContactDatabase";
+import ProductionTeam from "./ProductionTeam";
+import CastList from "./CastList";
+import EndRehearsal from "./EndRehearsal";
+import ViewLineNotes from "./ViewLineNotes";
+
+const { ipcRenderer } = window.require("electron");
 
 const ProjectWindow: React.FC = () => {
-  const { state: projectState, dispatch } = useProject();
+  const { state: projectState } = useProject();
   const { state: globalState } = useGlobal();
-  const { showSettings } = useSettings();
+  const { showSettings, hideSettings } = useSettings();
   const { loadingType } = globalState;
 
   useEffect(() => {
@@ -30,6 +39,62 @@ const ProjectWindow: React.FC = () => {
 
     return () => {
       window.removeEventListener("keydown", handleKeydown);
+    };
+  }, [showSettings]);
+
+  useEffect(() => {
+    const listener = (event: any, itemName: string) => {
+      switch (itemName) {
+        // Project menu
+        case "New Project":
+          showSettings(CreateNewProject);
+          break;
+        case "Open Project":
+          showSettings(OpenProject);
+          break;
+        case "Save Project":
+          // Implement save logic here
+          break;
+
+        // Content menu
+        case "Upload Script":
+          showSettings(UploadScript);
+          break;
+        case "Character List":
+          showSettings(CharacterList);
+          break;
+
+        // Team menu
+        case "Contact List":
+          showSettings(ContactDatabase);
+          break;
+        case "Production Team":
+          showSettings(ProductionTeam);
+          break;
+        case "Cast List":
+          showSettings(CastList);
+          break;
+
+        // Rehearsal menu
+        case "End Rehearsal":
+          showSettings(EndRehearsal);
+          break;
+
+        // Reports menu
+        case "View Line Notes":
+          showSettings(ViewLineNotes);
+          break;
+
+        default:
+          break;
+      }
+    };
+
+    ipcRenderer.on("menu-item-click", listener);
+
+    // Clean up the event listener on unmount
+    return () => {
+      ipcRenderer.removeListener("menu-item-click", listener);
     };
   }, [showSettings]);
 

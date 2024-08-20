@@ -22,7 +22,7 @@ type ProjectSaveFile = {
   lineNotes: any[];
   productionTeam: any[];
   productionDepartments: any[];
-  rehearsalReports: any[];
+  rehearsalNotes: any[];
 };
 
 type State = {
@@ -88,7 +88,7 @@ const initialState: State = {
       },
     ],
     productionDepartments: [],
-    rehearsalReports: [],
+    rehearsalNotes: [],
   },
   isProjectSaved: false,
   verticalPaneSizes: [50, 50],
